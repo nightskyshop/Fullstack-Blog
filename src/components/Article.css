@@ -1,0 +1,32 @@
+.posts__article {
+    display: flex;
+    flex-direction: column;
+    padding: 1em .5em;
+}
+
+.posts__article h1 {
+    font-weight: 400;
+    margin: 0;
+    padding: 10px 0;
+    border-bottom: .5px solid rgba(140, 140, 145, 0.4);
+}
+
+.posts__box {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+}
+
+.posts__box p {
+    font-size: .9rem;
+    font-weight: 300;
+    margin: .5em .8em 0 0;
+}
+
+.posts__box img {
+    max-width: 100px;
+    min-width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+}

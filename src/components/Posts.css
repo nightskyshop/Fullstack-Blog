@@ -1,0 +1,21 @@
+.howmany {
+    font-size: 1.2rem;
+    font-weight: 300;
+    height: 38px;
+    margin: 5em 2.1em 0 2.1em;
+    border-bottom: 1px solid rgba(140, 140, 145, 0.4);
+}
+
+.posts {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 160px;
+    gap: 2em;
+    padding: 1em 2em;
+}
+
+.posts__loading {
+    font-size: 1.8rem;
+    font-weight: 300;
+    padding: 0 .5em;
+}
