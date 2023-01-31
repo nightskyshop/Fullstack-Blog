@@ -33,7 +33,7 @@ function Header() {
                         <span>IT</span>
                     </div>
 
-                    <div className="sidebar__category">
+                    <div className={`${sidebarOpen && "category__open" } sidebar__category`}>
                         <Link className="sidebar__all" to="/">분류 전체 보기</Link>
                         {!loading && (
                             categoryData.map((category, index) => {
@@ -48,9 +48,16 @@ function Header() {
                 </div>
                 <div className="sidebar__auth">
                     <Link to="/">회원가입</Link>
-                    <Link to="/">로그인</Link>
+                    <Link to="/" style={ 1030 >  window.innerWidth > 700 ? {marginRight: "30px"} : null}>로그인</Link>
+                    
+                    <FontAwesomeIcon
+                        icon={sidebarOpen ? faX : faBars}
+                        className="listed_onclick"
+                        onClick={OpenSidebar}
+                    />
                 </div>
             </section>
+
             <FontAwesomeIcon
                 icon={sidebarOpen ? faX : faBars}
                 className="onclick"
