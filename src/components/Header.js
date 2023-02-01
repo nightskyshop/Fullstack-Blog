@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import useWindowSize from "../useWindowSize";
 import { Link } from 'react-router-dom';
 import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,6 +9,7 @@ function Header() {
     const [categoryData, setCategoryData] = useState();
     const [loading, setLoading] = useState(true);
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [width, height] = useWindowSize();
 
     useEffect(() => {
         const apiUrl = "http://127.0.0.1:8000/api/category";
@@ -39,7 +41,7 @@ function Header() {
                             categoryData.map((category, index) => {
                                 return (
                                     <>
-                                        <Link key={index} to="/">{category.name}</Link>
+                                        <Link key={index} to="/"><p key={index}>{category.name}</p></Link>
                                     </>
                                 )
                             })
@@ -48,7 +50,7 @@ function Header() {
                 </div>
                 <div className="sidebar__auth">
                     <Link to="/">회원가입</Link>
-                    <Link to="/" style={ 1030 >  window.innerWidth > 700 ? {marginRight: "30px"} : null}>로그인</Link>
+                    <Link to="/" style={ 700 <= width <= 1030 ? {marginRight: "30px"} : null}>로그인</Link>
                     
                     <FontAwesomeIcon
                         icon={sidebarOpen ? faX : faBars}

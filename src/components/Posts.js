@@ -5,7 +5,7 @@ import "./Posts.css";
 function Posts() {
     const [postData, setPostData] = useState([0]);
     const [loading, setLoading] = useState(true);
-    const [loadingText, setLoadingText] = useState("Loading...")
+    const [loadingText, setLoadingText] = useState("Loading...");
     useEffect(() => {
         const apiUrl = "http://127.0.0.1:8000/api/";
         fetch(apiUrl)
