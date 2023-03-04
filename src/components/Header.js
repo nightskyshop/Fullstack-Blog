@@ -41,7 +41,7 @@ function Header() {
                             categoryData.map((category, index) => {
                                 return (
                                     <>
-                                        <Link key={index} to="/"><p key={index}>{category.name}</p></Link>
+                                        <Link key={index} to={`/category/${category.id}`}><p key={index}>{category.name}</p></Link>
                                     </>
                                 )
                             })
