@@ -9,6 +9,8 @@ function Header() {
     const [categoryData, setCategoryData] = useState();
     const [loading, setLoading] = useState(true);
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [categoryDisplay, setCategoryDisplay] = useState(false);
+    const [searchText, setSearchText] = useState("");
     const [width, height] = useWindowSize();
 
     useEffect(() => {
@@ -19,15 +21,36 @@ function Header() {
             .then(() => setLoading(false))
     }, []);
 
-    function OpenSidebar() {
+    useEffect(() => {
+        if (width <= 700 && !sidebarOpen) {
+            setCategoryDisplay(true);
+        } else {
+            setCategoryDisplay(false);
+        }
+    }, [width, sidebarOpen])
+
+    const OpenSidebar = () => {
         setSidebarOpen((prev) => !prev);
+    }
+
+    const onChange = ({ target: {value} }) => {
+        setSearchText(value);
     }
 
     return (
         <>
             <section className={`${sidebarOpen && "sidebar__open" } sidebar`}>
-                <form className="sidebar__search" action="#" method="get">
-                    <input placeholder="검색하기" />
+                <form
+                    className="sidebar__search"
+                    action={`/post/search/${searchText}/`}
+                    method="get"
+                >
+                    <input
+                        type="search"
+                        placeholder="검색하기"
+                        value={searchText}
+                        onChange={onChange}
+                    />
                 </form>
                 <div className="sidebar__main">
                     <div className="sidebar__logo">
@@ -35,14 +58,17 @@ function Header() {
                         <span>IT</span>
                     </div>
 
-                    <div className={`${sidebarOpen && "category__open" } sidebar__category`}>
+                    <div
+                        className={`${sidebarOpen && "category__open" } sidebar__category`}
+                        style={categoryDisplay ? { display: "none" } : null}
+                    >
                         <Link className="sidebar__all" to="/">분류 전체 보기</Link>
                         {!loading && (
                             categoryData.map((category, index) => {
                                 return (
-                                    <>
-                                        <Link key={index} to={`/category/${category.id}`}><p key={index}>{category.name}</p></Link>
-                                    </>
+                                    <span key={index}>
+                                        <Link to={`/category/${category.id}`}><p key={index}>{category.name}</p></Link>
+                                    </span>
                                 )
                             })
                         )}

@@ -132,7 +132,8 @@ body {
     }
 
     .sidebar__logo {
-        font-size: 4rem;
+        font-size: 4.25rem;
+        margin-bottom: 10px;
     }
 
     .sidebar__category a {
