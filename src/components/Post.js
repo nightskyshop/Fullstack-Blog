@@ -30,7 +30,7 @@ function Post() {
         fetch(userApiUrl)
             .then((response) => response.json())
             .then((data) => setAuthor(data.username))
-    }, [slug])
+    }, [slug, post.category, post.author])
 
     return (
         <main className="post">
