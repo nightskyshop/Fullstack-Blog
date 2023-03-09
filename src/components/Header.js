@@ -75,8 +75,8 @@ function Header() {
                     </div>
                 </div>
                 <div className="sidebar__auth">
-                    <Link to="/">회원가입</Link>
-                    <Link to="/" style={ 700 <= width <= 1030 ? {marginRight: "30px"} : null}>로그인</Link>
+                    <Link to="/signup/">회원가입</Link>
+                    <Link to="/login/" style={ 700 <= width <= 1030 ? {marginRight: "30px"} : null}>로그인</Link>
                     
                     <FontAwesomeIcon
                         icon={sidebarOpen ? faX : faBars}

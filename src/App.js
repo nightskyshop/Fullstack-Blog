@@ -5,6 +5,7 @@ import Post from './components/Post';
 import Category from './components/Category';
 import Header from './components/Header';
 import Search from './components/Search';
+import Signup from "./components/Signup";
 import "./App.css";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/post/:slug" element={<Post />} />
         <Route path="/post/search/:search" element={<Search />} />
         <Route path="/category/:id" element={<Category />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </Router>
   );
