@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Posts title="전체 글" apiUrl="http://127.0.0.1:8000/api/" />} />
         <Route path="/post/:slug" element={<Post />} />
-        <Route path="/post/search/:search" element={<Search />} />
+        <Route path="/post/text/search/:search" element={<Search />} />
         <Route path="/category/:id" element={<Category />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>

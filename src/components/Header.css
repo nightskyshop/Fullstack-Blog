@@ -26,6 +26,23 @@ body {
 
 .sidebar__search input {
     all: unset;
+    padding-right: 1em;
+}
+
+.sidebar__search input::-webkit-search-decoration,
+.sidebar__search input::-webkit-search-cancel-button,
+.sidebar__search input::-webkit-search-results-button,
+.sidebar__search input::-webkit-search-results-decoration {
+    display:none;
+}
+
+.sidebar__search button {
+    display: none;
+    all: unset;
+}
+
+.sidebar__search button.show {
+    display: inline-block;
 }
 
 .sidebar__logo {

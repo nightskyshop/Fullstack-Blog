@@ -11,6 +11,7 @@ function Header() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [categoryDisplay, setCategoryDisplay] = useState(false);
     const [searchText, setSearchText] = useState("");
+    const [mouseEnter, setMouseEnter] = useState(false);
     const [width, height] = useWindowSize();
 
     useEffect(() => {
@@ -27,23 +28,38 @@ function Header() {
         } else {
             setCategoryDisplay(false);
         }
-    }, [width, sidebarOpen])
+    }, [width, sidebarOpen]);
+
+    const onMouseEnter = () => {
+        setMouseEnter(true);
+    };
+
+    const onMouseLeave = () => {
+        setMouseEnter(false);
+    };
+
+    const inputClear = (e) => {
+        e.preventDefault();
+        setSearchText("");
+    };
 
     const OpenSidebar = () => {
         setSidebarOpen((prev) => !prev);
-    }
+    };
 
     const onChange = ({ target: {value} }) => {
         setSearchText(value);
-    }
+    };
 
     return (
         <>
             <section className={`${sidebarOpen && "sidebar__open" } sidebar`}>
                 <form
                     className="sidebar__search"
-                    action={`/post/search/${searchText}/`}
+                    action={`/post/text/search/${searchText}/`}
                     method="get"
+                    onMouseEnter={onMouseEnter}
+                    onMouseLeave={onMouseLeave}
                 >
                     <input
                         type="search"
@@ -51,6 +67,12 @@ function Header() {
                         value={searchText}
                         onChange={onChange}
                     />
+                    <button type="reset" style={!mouseEnter ? { display: "none" } : null}>
+                        <FontAwesomeIcon
+                            icon={faX}
+                            onClick={inputClear}
+                        />
+                    </button>
                 </form>
                 <div className="sidebar__main">
                     <div className="sidebar__logo">
