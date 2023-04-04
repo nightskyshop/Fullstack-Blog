@@ -9,6 +9,7 @@ function Signup() {
         email: '',
         username: '',
         password: '',
+        passwordCheck: ''
     });
 
     const [formData, setFormData] = useState(initialFormData);
@@ -23,18 +24,21 @@ function Signup() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(formData);
-
-        axiosInstance
-            .post('user/register/', {
-                email: formData.email,
-                username: formData.username,
-                password: formData.password
-            })
-            .then((response) => {
-                navigate('/login');
-                console.log(response);
-                console.log(response.data);
-            })
+        if (formData.password !== formData.passwordCheck) {
+            alert("Password and Password Check is not the same!");
+        } else {
+            axiosInstance
+                .post('user/register/', {
+                    email: formData.email,
+                    username: formData.username,
+                    password: formData.password
+                })
+                .then((response) => {
+                    navigate('/login');
+                    console.log(response);
+                    console.log(response.data);
+                })
+        }
     }
 
     return (
@@ -59,6 +63,14 @@ function Signup() {
                     placeholder="Password"
                     onChange={handleChange}
                 />
+
+                <input
+                    name="passwordCheck"
+                    type="password"
+                    placeholder="PasswordCheck"
+                    onChange={handleChange}
+                />
+                
                 <button>Submit</button>
             </form>
         </main>
