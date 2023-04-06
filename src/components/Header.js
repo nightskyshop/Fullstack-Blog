@@ -23,7 +23,7 @@ function Header() {
     }, []);
 
     useEffect(() => {
-        if (width <= 700 && !sidebarOpen) {
+        if (width <= 1030 && !sidebarOpen) {
             setCategoryDisplay(true);
         } else {
             setCategoryDisplay(false);

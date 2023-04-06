@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from "../axios";
+import "./Signup.css";
 
 function Signup() {
     const navigate = useNavigate();
@@ -43,18 +44,21 @@ function Signup() {
 
     return (
         <main>
+            <h1>HajuIT</h1>
             <form onSubmit={handleSubmit}>
                 <input
                     name="email"
                     type="email"
                     placeholder="Email"
                     onChange={handleChange}
+                    required
                 />
 
                 <input
                     name="username"
                     placeholder="Name"
                     onChange={handleChange}
+                    required
                 />
 
                 <input
@@ -62,6 +66,7 @@ function Signup() {
                     type="password"
                     placeholder="Password"
                     onChange={handleChange}
+                    required
                 />
 
                 <input
@@ -69,6 +74,7 @@ function Signup() {
                     type="password"
                     placeholder="PasswordCheck"
                     onChange={handleChange}
+                    required
                 />
                 
                 <button>Submit</button>
